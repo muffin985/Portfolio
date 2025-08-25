@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambati Sai Pravalika - Portfolio</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header styles */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        /* Main content starts here */
+        main {
+            margin-top: 80px;
+        }
+
+        /* Hero section - first thing people see */
+        .hero {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-2px);
+        }
+
+        /* About section */
+        .about {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .about h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        /* Photo placeholder */
+        .profile-img {
+            width: 100%;
+            max-width: 280px;
+            height: 280px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: white;
+            margin: 0 auto;
+            font-weight: bold;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Projects section */
+        .projects {
+            padding: 4rem 0;
+        }
+
+        .projects h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Individual project cards */
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+        }
+
+        .project-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-card p {
+            margin-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Technology tags */
+        .tech-stack {
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Skills section */
+        .skills {
+            padding: 4rem 0;
+            background: #f8f9fa;
+        }
+
+        .skills h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.2rem;
+            color: #2c3e50;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Individual skill categories */
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 4rem 0;
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .contact-item h3 {
+            color: #3498db;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item p {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile friendly design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Sai Pravalika</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero section - First impression -->
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>Hi, I'm Ambati Sai Pravalika</h1>
+                <p>2nd Year Student Learning Web Development & DSA</p>
+                <a href="#projects" class="btn">See My Work</a>
+            </div>
+        </section>
+
+        <!-- About section - Tell your story -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2>About Me</h2>
+                <div class="about-content">
+                    <div class="profile-img">
+                        Your Photo Here
+                    </div>
+                    <div class="about-text">
+                        <p>I am currently in 2nd Year and I am very keen to learn new things. As I explored some of the things, Web development and DSA caught my attention. I am not a Pro, but I'm eager to learn and I depend on hardwork.</p>
+                        
+                        <p>I am currently learning HTML5, CSS and JavaScript. I'm following GeeksforGeeks (GFG) for my DSA journey and online tutorials for web development concepts.</p>
+                        
+                        <p>I love Art - I love sketching and painting. And my favourite hobby is dancing. Coming to my goals, I want to become a skillful web developer and a good programmer.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects section - Show what you've built -->
+        <section class="projects" id="projects">
+            <div class="container">
+                <h2>My Projects</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3>Portfolio Website</h3>
+                        <p>My very first web development project! Created this portfolio website to showcase my learning journey. Still learning HTML and CSS, but proud of taking the first step into web development.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">Responsive Design</span>
+                        </div>
+                        <a href="#" class="btn">You're Here!</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Learning Journey</h3>
+                        <p>Currently following GeeksforGeeks tutorials and practicing basic programming concepts. Working on understanding fundamental data structures and algorithms step by step.</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Learning</span>
+                            <span class="tech-tag">GeeksforGeeks</span>
+                            <span class="tech-tag">Fundamentals</span>
+                        </div>
+                        <a href="#" class="btn">In Progress</a>
+                    </div>
+
+                    <div class="project-card">
+                        <h3>Art & Creativity</h3>
+                        <p>While not coding, I express creativity through sketching and painting. Dancing is my favorite hobby, and I believe creativity helps in problem-solving and coding too!</p>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Sketching</span>
+                            <span class="tech-tag">Painting</span>
+                            <span class="tech-tag">Dancing</span>
+                        </div>
+                        <a href="#" class="btn">Creative Side</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills section - What you know -->
+        <section class="skills" id="skills">
+            <div class="container">
+                <h2>My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Programming Languages</h3>
+                        <ul class="skill-list">
+                            <li>HTML5 (Learning - 1 month)</li>
+                            <li>CSS3 (Learning - 1 month)</li>
+                            <li>JavaScript (Just Started)</li>
+                            <li>C/C++ (Basic Understanding)</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Problem Solving & DSA</h3>
+                        <ul class="skill-list">
+                            <li>Arrays & Strings (Learning)</li>
+                            <li>Basic Algorithms (Sorting, Searching)</li>
+                            <li>GeeksforGeeks Practice</li>
+                            <li>Problem-solving mindset</li>
+                        </ul>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3>Tools & Creative Skills</h3>
+                        <ul class="skill-list">
+                            <li>Code Editor (VS Code)</li>
+                            <li>Web Browser DevTools (Learning)</li>
+                            <li>Sketching & Drawing</li>
+                            <li>Painting & Dancing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact section - How to reach you -->
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2>Let's Connect</h2>
+                <p>I'm always excited to learn from others and work on interesting projects!</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Gmail</h3>
+                        <p>pravalika.ambati7@gmail.com</p>
+                        
+                    </div>
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>India</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Interests</h3>
+                        <p>Web Development, DSA, Art & Dance</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ambati Sai Pravalika. Thanks for visiting!</p>
+        </div>
+    </footer>
+
+    <!-- Simple JavaScript for smooth scrolling -->
+    <script>
+        // Make navigation links scroll smoothly
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add some hover effects to project cards
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Add a simple greeting when page loads
+        window.addEventListener('load', function() {
+            console.log('Welcome to Sai Pravalika\'s Portfolio! 🎨💻');
+        });
+    </script>
+</body>
+</html>
